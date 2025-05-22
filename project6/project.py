@@ -92,6 +92,89 @@ Bank.change_bank_name("National Bank")
 # Show updated bank names
 acc1.display()
 acc2.display()
+               #  ===Static Variables and Static Methods ===
+# Assignment:
+# Create a class MathUtils with a static method add(a, b) that returns the sum. No class or instance variables should be used.
+class MathUtils:
+    @staticmethod
+    def add(a, b):
+        return a + b
+
+# Example usage
+result = MathUtils.add(5, 7)
+print("Sum:", result)
+
+            # ==== 6. Constructors and Destructors ====
+# Assignment:
+# Create a class Logger that prints a message when an object is created (constructor) and another message when it is destroyed (destructor).
+class Logger:
+    def __init__(self):
+        print("Logger object created.")
+
+    def __del__(self):
+        print("Logger object destroyed.")
+
+# Example usage
+logger = Logger()
+
+# Optionally delete the object explicitly
+del logger
+
+           # ==== 7. Access Modifiers: Public, Private, and Protected ====
+# Assignment:
+# Create a class Employee with:
+# a public variable name,
+# a protected variable _salary, and
+# a private variable __ssn.
+# Try accessing all three variables from an object of the class and document what happens.
+class Employee:
+    def __init__(self, name, salary, ssn):
+        self.name = name          # Public variable
+        self._salary = salary     # Protected variable (convention)
+        self.__ssn = ssn          # Private variable (name mangling)
+
+# Create object
+emp = Employee("Alice", 50000, "123-45-6789")
+
+# Accessing public variable
+print("Name (public):", emp.name)
+
+# Accessing protected variable
+print("Salary (_protected):", emp._salary)
+
+# Trying to access private variable directly
+try:
+    print("SSN (__private):", emp.__ssn)
+except AttributeError as e:
+    print("Error accessing __ssn directly:", e)
+
+# Accessing private variable using name mangling
+print("SSN (accessed via name mangling):", emp._Employee__ssn)
+
+              # ==== 8. The super() Function ====
+# Assignment:
+# Create a class Person with a constructor that sets the name. Inherit a class Teacher from it, add a subject field, and use super() to call the base class constructor.
+class Person:
+    def __init__(self, name):
+        self.name = name
+        print("Person constructor called")
+
+class Teacher(Person):
+    def __init__(self, name, subject):
+        super().__init__(name)  # Call to the base class constructor
+        self.subject = subject
+        print("Teacher constructor called")
+
+# Example usage
+teacher = Teacher("Mr. Smith", "Mathematics")
+
+print("Name:", teacher.name)
+print("Subject:", teacher.subject)
+# Output: Person constructor called
+#         Teacher constructor called
+#         Name: Mr. Smith
+#         Subject: Mathematics
+
 
 
 
